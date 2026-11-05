@@ -3,8 +3,6 @@
 // Requirements: add / toggle-complete / delete / filter / counter,
 // using event delegation on #todo-list.
 
-// TODO: your code here
-
 document.addEventListener('DOMContentLoaded', () => {
     // Select DOM Elements
     const todoForm = document.getElementById('todo-form');
@@ -35,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
           activeCount++;
         }
   
-        // Applying current filter visibility
+        // Applying current filter visibility using inline styles to override flex display conflicts
         if (currentFilter === 'all') {
-          li.classList.remove('hidden');
+          li.style.display = 'flex';
         } else if (currentFilter === 'active') {
-          li.classList.toggle('hidden', isCompleted);
+          li.style.display = isCompleted ? 'none' : 'flex';
         } else if (currentFilter === 'done') {
-          li.classList.toggle('hidden', !isCompleted);
+          li.style.display = isCompleted ? 'flex' : 'none';
         }
       });
   
